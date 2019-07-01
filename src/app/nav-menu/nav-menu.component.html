@@ -1,0 +1,13 @@
+<div class="side-nav-box">
+  <div class=" align-items-center" style="display: flex; padding: 1.5rem 0; background: #CCCCCC;">
+    <div class="col-4">
+      <img src="../../assets/user.jpg" class=" rounded-circle" style="width: 60px; border: 1px solid #f0f0f0;">
+    </div>
+    <div class="col">
+      <span>系统管理员</span>
+      <br/>
+      <span>Admin</span>
+    </div>
+  </div>
+  <app-nav-item [menu]="menu" *ngFor="let menu of menus"></app-nav-item>
+</div>

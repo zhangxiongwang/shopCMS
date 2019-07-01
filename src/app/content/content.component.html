@@ -1,0 +1,6 @@
+<div style="padding: 1rem" class="row">
+  <div echarts [options]="chartOption" [loading]="isloading" theme="macarons" class="demo-chart"
+       *ngIf="chartOption.series[0].data.length>0"></div>
+  <div echarts [options]="option" [loading]="isloading" theme="macarons" class="demo-chart"
+       *ngIf="option.series[0].data.length>0"></div>
+</div>

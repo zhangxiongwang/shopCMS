@@ -1,0 +1,45 @@
+<div class="pd">
+  <form [formGroup]="form" (submit)="update()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>店铺名称</label>
+        <input type="text" class="form-control" placeholder="请输入店铺名称" formControlName="shoptitle">
+      </div>
+      <div class="form-group col-md-6">
+        <label>店主昵称</label>
+        <input type="text" class="form-control" placeholder="请输入店主昵称" formControlName="nick">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6" *ngIf="category">
+        <label>商品类型</label>
+        <select class="form-control" formControlName="category" [(ngModel)]="category"name="category">
+          <option *ngFor="let p of categories" value="{{p.favoritesid}}">
+            {{p.favoritestitle}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label>商品描述</label>
+        <input type="text" class="form-control" placeholder="请输入商品的描述信息" formControlName="title">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>商品价格</label>
+        <input type="number" class="form-control" placeholder="请输入商品的价格" formControlName="price">
+      </div>
+      <div class="form-group col-md-6">
+        <label>商品数量</label>
+        <input type="number" class="form-control" placeholder="请输入上架商品数量" formControlName="volume">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>照片地址</label>
+      <input type="text" class="form-control" placeholder="请输入商品的照片url地址" formControlName="picturl">
+    </div>
+    <button [disabled]="form.invalid || !form.dirty || form.untouched || form.disabled"
+      type="submit" class="btn btn-primary btn-block">确定</button>
+  </form>
+
+</div>

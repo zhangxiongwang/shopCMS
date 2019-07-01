@@ -1,0 +1,11 @@
+.navbar-default {
+  border: none;
+  margin-bottom: 0px;
+  background-color: #64b0f2;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 0px;
+}
+.btn-c{
+  background: #64b0f2;
+  color: white;
+}

@@ -1,0 +1,25 @@
+.pd {
+  padding: 1rem;
+}
+
+td {
+  vertical-align: inherit !important;
+}
+
+.p-width {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 350px;
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.fs-13 {
+  font-size: 13px;
+}

@@ -1,0 +1,48 @@
+<div class="pd">
+  <div class="flex">
+    <input class="form-control w-25 fs-13" placeholder="请输入您要搜索的商品描述或编号" [(ngModel)]="searchTearm">
+    <button class="btn btn-light ml-2 fs-13" (click)="search(0)"> 确定</button>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">商品编号</th>
+      <th scope="col">商铺名称</th>
+      <th scope="col">商品描述</th>
+      <th scope="col">商品价格</th>
+      <th scope="col">商品款式</th>
+      <th scope="col">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of page;let i = index">
+      <td>{{p.numiid}}</td>
+      <td>
+        <p class="p-width" style="width: 150px">{{p.shoptitle}}</p>
+      </td>
+      <td>
+        <p class="p-width">{{p.title}}</p>
+      </td>
+      <td>¥ {{p.zkfinalprice}}</td>
+      <td>
+        <img src="{{p.picturl}}" style="width: 60px">
+      </td>
+      <td>
+        <button type="button" class="btn btn-outline-primary fs-13 p-1" (click)="update(p)">修改</button>
+        <button type="button" class="btn btn-outline-danger fs-13 p-1" (click)="delete(template,p)">删除</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination [boundaryLinks]="false" [totalItems]="totalNum" [maxSize]="10" (pageChanged)="pageChanged($event)"
+              [(ngModel)]="curPage" class="pagination-sm" [itemsPerPage]="pageData"
+              previousText="上一页" nextText="下一页">
+  </pagination>
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>确定要删除该商品?</p>
+      <button type="button" class="btn btn-default" (click)="decline()">取消</button>
+      <button type="button" class="btn btn-primary" (click)="confirm()">确定</button>
+    </div>
+  </ng-template>
+</div>

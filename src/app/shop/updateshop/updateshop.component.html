@@ -1,0 +1,45 @@
+<div class="pd">
+  <button class="btn btn-light mb-2" (click)="goback()">返回</button>
+  <form (submit)="update()" *ngIf="cloth">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>店铺名称</label>
+        <input type="text" class="form-control" placeholder="请输入店铺名称" [(ngModel)]="cloth.shoptitle" name="shop">
+      </div>
+      <div class="form-group col-md-6">
+        <label>店主昵称</label>
+        <input type="text" class="form-control" placeholder="请输入店主昵称" [(ngModel)]="cloth.nick" name="nick">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>商品类型</label>
+        <select class="form-control" [(ngModel)]="cloth.favoritesid" name="cates" #cates>
+          <option *ngFor="let p of categories" value="{{p.favoritesid}}">
+            {{p.favoritestitle}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label>商品描述</label>
+        <input type="text" class="form-control" placeholder="请输入商品的描述信息" [(ngModel)]="cloth.title" name="title">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>商品价格</label>
+        <input type="number" class="form-control" placeholder="请输入商品的价格" [(ngModel)]="cloth.zkfinalprice" name="price">
+      </div>
+      <div class="form-group col-md-6">
+        <label>商品数量</label>
+        <input type="number" class="form-control" placeholder="请输入上架商品数量" [(ngModel)]="cloth.volume" name="volume">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>照片地址</label>
+      <input type="text" class="form-control" placeholder="请输入商品的照片url地址" [(ngModel)]="cloth.picturl" name="picturl">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">确定</button>
+  </form>
+
+</div>

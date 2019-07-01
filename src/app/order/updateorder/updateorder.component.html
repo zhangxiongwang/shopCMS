@@ -1,0 +1,31 @@
+<div class="pd">
+  <button class="btn btn-light mb-2" (click)="goback()">返回</button>
+  <form (submit)="update()" *ngIf="orders">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>订单数量</label>
+        <input type="number" class="form-control" placeholder="请输入数量" [(ngModel)]="orders.number" name="shop">
+      </div>
+      <div class="form-group col-md-6">
+        <label>订单价格</label>
+        <input type="number" class="form-control" placeholder="请输入价格" [(ngModel)]="orders.price" name="nick">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>订单日期</label>
+        <input type="text" class="form-control"disabled  [(ngModel)]="orders.ordertime" name="price">
+      </div>
+      <div class="form-group col-md-6">
+        <label>下单人</label>
+        <input type="number" disabled class="form-control" [(ngModel)]="orders.username" name="volume">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>照片地址</label>
+      <input type="text" disabled class="form-control" [(ngModel)]="orders.imgurl" name="picturl">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">确定</button>
+  </form>
+
+</div>

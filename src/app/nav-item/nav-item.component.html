@@ -1,0 +1,26 @@
+<div class="level-1">
+  <ng-template [ngIf]="menu.type === 'link'">
+    <div>
+      <a class="link level-1" routerLink="{{menu.url}}" routerLinkActive="selected" [routerLinkActiveOptions]="{exact: true}" (click)="toggleSubMenu(menu)">{{
+        menu.name }}</a>
+    </div>
+  </ng-template>
+  <ng-template [ngIf]="menu.type === 'button'">
+    <div>
+      <div class="button heading"[ngClass]="{expand:menu.expand,selected:menu.expand}"
+           (click)="toggleSubMenu(menu)">
+        {{menu.name}}
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24">
+            <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path>
+          </svg>
+        </div>
+      </div>
+      <ng-template [ngIf]="menu.expand">
+        <div class="heading-children" [@inOut]="out">
+          <app-nav-item [menu]="menu" *ngFor="let menu of menu.subMenu"></app-nav-item>
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</div>

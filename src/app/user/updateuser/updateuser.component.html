@@ -1,0 +1,41 @@
+<div style="padding: 2rem">
+  <form [formGroup]="form" (submit)="changePwd()">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <span>用户名:</span>
+      </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="username" placeholder="请输入用户名">
+        <div [hidden]="!(form.controls['username'].errors && form.controls['username'].dirty)">
+          用户名必填
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <span>原密码:</span>
+      </label>
+      <div class="col-sm-10">
+        <input class=" form-control" type="password" formControlName="oldpassword" placeholder="请输入原密码">
+        <div [hidden]="!(form.controls['oldpassword'].errors && form.controls['oldpassword'].dirty)">
+          密码必填,不能少于6位
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <span>新密码:</span>
+      </label>
+      <div class="col-sm-10">
+        <input class=" form-control" type="password" formControlName="newpassword"
+               placeholder="请输入新密码">
+        <div [hidden]="!(form.controls['newpassword'].errors && form.controls['newpassword'].dirty)">
+          新密码必填,不能少于6位
+        </div>
+      </div>
+    </div>
+    <button [disabled]="form.invalid || !form.dirty || form.untouched || form.disabled"
+            class="btn btn-primary btn-lg btn-block">修改密码
+    </button>
+  </form>
+</div>

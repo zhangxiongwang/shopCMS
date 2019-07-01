@@ -1,0 +1,26 @@
+<div style="padding: 2rem">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">用户名</th>
+      <th scope="col">昵称</th>
+      <th scope="col">性别</th>
+      <th scope="col">注册日期</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of page;let i = index">
+      <td>{{p.id}}</td>
+      <td>{{p.username}}</td>
+      <td>{{p.nickname}}</td>
+      <td>{{p.sex}}</td>
+      <td>{{p.registdate|date:'yyyy-MM-dd HH:ss:mm'}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination [boundaryLinks]="false" [totalItems]="totalNum" [maxSize]="10" (pageChanged)="pageChanged($event)"
+              [(ngModel)]="curPage" class="pagination-sm" [itemsPerPage]="pageData"
+              previousText="上一页" nextText="下一页">
+  </pagination>
+</div>

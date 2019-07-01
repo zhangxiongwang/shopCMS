@@ -1,0 +1,24 @@
+<div class="login">
+  <header class="header">
+    <span class="text">登录</span>
+    <span class="loader"></span>
+  </header>
+  <form class="form" [formGroup]="loginForm">
+    <input class="input" type="text" formControlName="userName" placeholder="用户名">
+    <div [hidden]="!(loginForm.controls['userName'].errors && loginForm.controls['userName'].dirty)">
+      用户名必填
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <input class="form-control input" type="password" formControlName="password" placeholder="密码">
+        <div class="c-validator-invalid"
+             [hidden]="!(loginForm.controls['password'].errors && loginForm.controls['password'].dirty)">
+          密码必填
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn" [disabled]="!loginForm.valid" (click)="login();"> 登录</button>
+  </form>
+</div>
+
+<div class="fullScreen"></div>
