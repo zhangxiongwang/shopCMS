@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ToastrService} from "ngx-toastr";
-import {HttpService} from "../../service/http.service";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+import { HttpService } from "../../service/http.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-updateuser',
@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class UpdateuserComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private  toast: ToastrService, private http: HttpService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private toast: ToastrService, private http: HttpService, private router: Router) {
   }
 
 
@@ -30,7 +30,7 @@ export class UpdateuserComponent implements OnInit {
       oldpwd: this.form.get('oldpassword').value,
       newpwd: this.form.get('newpassword').value,
     }
-    this.http.httpGet('/resetPwd', usr, val => {
+    this.http.httpPost('/resetPwd', usr, val => {
       if (val.data == '修改成功') {
         this.toast.success(val.data);
         this.router.navigate(['/home/user'])

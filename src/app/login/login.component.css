@@ -16,6 +16,7 @@ body {
 .fullScreen {
   width: 100%;
   height: fill-available;
+  display:inline-block;
   background-image:url("../../assets/bg.jpeg");
 }
 

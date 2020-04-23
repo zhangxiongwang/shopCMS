@@ -1,8 +1,8 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {HttpService} from "../service/http.service";
-import {ToastrService} from "ngx-toastr";
-import {BsModalService, BsModalRef} from "ngx-bootstrap";
-import {Router} from "@angular/router";
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { HttpService } from "../service/http.service";
+import { ToastrService } from "ngx-toastr";
+import { BsModalService, BsModalRef } from "ngx-bootstrap";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-shop',
@@ -18,7 +18,7 @@ export class ShopComponent implements OnInit {
   modalRef: BsModalRef;
   delitem: any;
 
-  constructor(private  http: HttpService, private toast: ToastrService, private modalService: BsModalService, private router: Router) {
+  constructor(private http: HttpService, private toast: ToastrService, private modalService: BsModalService, private router: Router) {
   }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class ShopComponent implements OnInit {
       pageNo: page,
       pageSize: 10
     }
-    this.http.httpGet('/getcloth', params, val => {
+    this.http.httpGet('/getallcloth', params, val => {
       this.page = val.content;
       this.pageData = val.numberofElements;
       this.curPage = page + 1;
@@ -80,18 +80,18 @@ export class ShopComponent implements OnInit {
 
   // 更新数据
   update(p) {
-    this.router.navigate(['home/shop/updateshop'], {queryParams: {id: p.id}})
+    this.router.navigate(['home/shop/updateshop'], { queryParams: { id: p.id } })
   }
 
   // 删除数据
   delete(template: TemplateRef<any>, p) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
     this.delitem = p;
   }
 
   confirm(): void {
     console.log(this.delitem);
-    this.http.httpGet('/delClothById', {clothesid: this.delitem.id}, val => {
+    this.http.httpGet('/delClothById', { clothesid: this.delitem.id }, val => {
       if (val.data == '删除成功') {
         if (this.searchTearm) {
           this.search(this.curPage - 1);

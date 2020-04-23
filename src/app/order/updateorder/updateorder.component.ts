@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpService} from "../../service/http.service";
-import {ToastrService} from "ngx-toastr";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { HttpService } from "../../service/http.service";
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: 'app-updateorder',
   templateUrl: './updateorder.component.html',
@@ -24,7 +24,7 @@ export class UpdateorderComponent implements OnInit {
   // 初始化数据
   init(id) {
     console.log(id);
-    this.http.httpGet('/getById', {id: id}, val => {
+    this.http.httpGet('/getOrderById', { id: id }, val => {
       this.orders = val.data;
       console.log(this.orders)
     })

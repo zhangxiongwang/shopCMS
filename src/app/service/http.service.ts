@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient,HttpErrorResponse} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
-import {ToastrService} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 @Injectable()
 export class AppGlobal {
   //定义全局变量
@@ -11,7 +11,7 @@ export class AppGlobal {
 
 @Injectable()
 export class HttpService {
-  constructor(private http: HttpClient, private  toast: ToastrService,) {
+  constructor(private http: HttpClient, private toast: ToastrService, ) {
   }
 
   // 对参数进行编码
@@ -49,8 +49,8 @@ export class HttpService {
         var d = res;
         callback(d == null ? "[]" : d);
       }).catch(error => {
-      this.handleError(error);
-    });
+        this.handleError(error);
+      });
   }
 
   private handleError(error: Response | any) {
@@ -64,7 +64,10 @@ export class HttpService {
       console.error(msg + '，请检查路径是否正确');
     }
     if (error.status == 500) {
-      msg = '服务器发生错误(code：500)';
+      if (!error.message) {
+        msg = '服务器发生错误(code：500)';
+      }
+      msg = error.error.message;
       console.error(msg + '，服务器出错，请联系管理员');
     }
     if (error.status == 0) {
